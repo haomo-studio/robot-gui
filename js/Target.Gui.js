@@ -64,7 +64,7 @@ define((require, exports, module) => {
 
   targetGUI.add({
     toggleSpace,
-  }, 'toggleSpace')
+  }, '切换空间坐标')
 
   targetGUI.add(helper, 'controlMode', ['translate', 'rotate']).onChange(() => {
     targetStore.dispatch('CHANGE_CONTROL_MODE', helper.controlMode)
