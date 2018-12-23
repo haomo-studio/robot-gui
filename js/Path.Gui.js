@@ -3,7 +3,7 @@ define((require, exports, module) => {
   const storeManager = require('State')
   const robotStore = require('Robot') // todo dont export store but a handle which acceps the name of the consuming module const targetStore = getStoreFrom('myModule') -> myModule accesses store targetStore
 
-  const pathGuiStore = storeManager.createStore('PathGui', {
+  const pathGuiStore = storeManager.createStore('路径控制', {
     points: [],
     currentPoint: 0,
     move: false,
@@ -11,7 +11,7 @@ define((require, exports, module) => {
 
   // the returned value of an action is set to the selected object
   // helper is needed, since dat.gui wants to modify the object, so we cant use ist on the state
-  const pathGUI = gui.addFolder('PathGui')
+  const pathGUI = gui.addFolder('路径管理')
 
   let interval = null
   pathGuiStore.listen([() => robotStore.getState().target, state => state], (robState, state) => {
@@ -76,7 +76,7 @@ define((require, exports, module) => {
     move: false,
   }
 
-  pathGUI.add(methods, 'savePoint').onChange(() => {
+  pathGUI.add(methods, '保存点位').onChange(() => {
     const {
       position,
       rotation,
@@ -92,7 +92,7 @@ define((require, exports, module) => {
     pathGuiStore.dispatch('SET_MOVE', methods.move)
   })
 
-  pathGUI.add(methods, 'next').onChange(() => {
+  pathGUI.add(methods, '下一个点').onChange(() => {
     pathGuiStore.dispatch('NEXT_POINT')
   })
 

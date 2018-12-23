@@ -180,7 +180,7 @@ define((require, exports, module) => {
     }
   })
 
-  const workingSpaceGUI = gui.addFolder('working space')
+  const workingSpaceGUI = gui.addFolder('工作空间')
 
   workingSpaceGUI.add(guiHelper, 'show').onChange(() => {
     workingSpaceStore.dispatch('CHANGE_VISIBILITY', guiHelper.show)

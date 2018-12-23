@@ -17,7 +17,7 @@ define((require, exports, module) => {
 
   // the returned value of an action is set to the selected object
   // helper is needed, since dat.gui wants to modify the object, so we cant use ist on the state
-  const targetGUI = gui.addFolder('targetGui')
+  const targetGUI = gui.addFolder('运动目标管理')
 
   const helper = {
     position: {

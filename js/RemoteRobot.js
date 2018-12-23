@@ -44,7 +44,7 @@ define((require, exports, module) => {
     remoteStatus: data,
   }))
 
-  const remoteRobotGui = gui.addFolder('RemoteRobot')
+  const remoteRobotGui = gui.addFolder('远程手臂')
 
   const guiHelper = Object.assign({}, defaultState)
 

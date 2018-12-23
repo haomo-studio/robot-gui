@@ -13,7 +13,7 @@ define((require, exports, module) => {
   const RAD_TO_DEG = 180 / Math.PI
   /* DAT GUI */
 
-  const geometryGui = gui.addFolder('robot geometry')
+  const geometryGui = gui.addFolder('手臂形状')
 
   for (const link in geometry) {
     if (link) {
@@ -59,7 +59,7 @@ define((require, exports, module) => {
     })
   })
 
-  const anglesGui = gui.addFolder('angles')
+  const anglesGui = gui.addFolder('角度控制')
   let i = 0
   for (const key in anglesDeg) {
     anglesGui.add(anglesDeg, key).min(jointLimits[`J${i}`][0] * RAD_TO_DEG).max(jointLimits[`J${i++}`][1] * RAD_TO_DEG).step(1).listen().onChange(() => {
@@ -73,14 +73,14 @@ define((require, exports, module) => {
     })
   }
 
-  const configurationGui = gui.addFolder('configuration')
+  const configurationGui = gui.addFolder('配置')
   for (const key in configuration) {
     configurationGui.add(configuration, key).listen().onChange(() => {
       robotStore.dispatch('ROBOT_CHANGE_CONFIGURATION', Object.values(configuration))
     })
   }
 
-  const angleLimitGui = anglesGui.addFolder('angle limits')
+  const angleLimitGui = anglesGui.addFolder('角度限制')
   for (const joint in jointLimitsDeg) {
     if (joint) {
       const jointFolder = angleLimitGui.addFolder(`joint ${joint}`)
