@@ -3,7 +3,7 @@ define((require, exports, module) => {
   const storeManager = require('State')
   const robotStore = require('Robot') // todo dont export store but a handle which acceps the name of the consuming module const targetStore = getStoreFrom('myModule') -> myModule accesses store targetStore
 
-  const pathGuiStore = storeManager.createStore('路径控制', {
+  const pathGuiStore = storeManager.createStore('路径', {
     points: [],
     currentPoint: 0,
     move: false,
@@ -70,10 +70,10 @@ define((require, exports, module) => {
   }))
 
   const methods = {
-    savePoint: () => {},
-    next: () => {},
+    '保存点位': () => {},
+    '下一个点': () => {},
     prev: () => {},
-    move: false,
+    '移动': false,
   }
 
   pathGUI.add(methods, '保存点位').onChange(() => {
@@ -88,7 +88,7 @@ define((require, exports, module) => {
     })
   })
 
-  pathGUI.add(methods, 'move').onChange(() => {
+  pathGUI.add(methods, '移动').onChange(() => {
     pathGuiStore.dispatch('SET_MOVE', methods.move)
   })
 
